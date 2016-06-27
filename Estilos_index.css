@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f2f2f2;
+  font-family: "Roboto";
+  border-top: 30px; 
+}
+
+#cuerpo {
+	width: 70em;
+	padding-top:6em;
+}
+
+#titulo {
+  font-family: "Roboto";
+  font-size: 25px;
+  color: #96ac3c;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px
+}
+
+#boton {
+	width:25em;
+  margin-left:0.5em;
+  margin-top:4.5em;
+
+}
+
+#boton input[type="submit"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #boton input[type="submit"]:hover {
+        background: #6D6D6D; }
+
+#buscar {
+  float: left;
+  width: 30em;
+  height: 41em;
+  margin-top: 0.7em;
+  margin-left: 5.5em;
+  margin-bottom: 0.7em;
+  background: #fff;
+  box-shadow: 0px 0px 3px grey;
+
+}
+
+#SubBus {
+float: left;
+width: 26em;
+height: 36em;
+margin-left:2em;
+}
+
+#formulario {
+width: 20em;
+height: 1.5em;
+padding-top:-2em;
+margin-top: 2em;
+margin-bottom:2.7em;
+margin-left: 2em;
+font-family: "Roboto";
+color: #6d6d6d;
+font-size: 18px;
+}
+
+#formulario1 {
+width: 20em;
+height: 1.5em;
+padding-top:-3em;
+margin-top: -1em;
+margin-bottom:3em;
+margin-left: 2em;
+font-family: "Roboto";
+color: #6d6d6d;
+font-size: 18px;
+}
+
+.select #formulario {
+  margin-top: 5em;
+}
+
+#lista {
+  /*float: left;*/
+  width: 40em;
+  height: 41em;
+  margin-top: 0.7em;
+  margin-left: 39em;
+  margin-bottom: 0.7em;
+  background: #fff;
+  box-shadow: 0px 0px 3px grey;
+
+}
+
+#subLis {
+float: left;
+width: 40em;
+height: 25em;
+margin-top: 1em;
+margin-left: 0em;
+}
+
+#titulo2 {
+  font-family: "Roboto";
+  font-size: 25px;
+  color: #96ac3c;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 5px
+}
+
+#fila {
+float: left;
+width: 40em;
+height: 4.8em;
+margin-top: 1em;
+margin-left: 0em;
+}
+
+/*-----------------*/
+
+#imag {
+float: left;
+width: 4em;
+height: 5em;
+margin-left: 0.3em;
+}
+.redondo {
+width: 3em;
+height: 3em;
+margin-top: 0.5em;
+margin-left: 0.5em;
+border-radius: 800px;
+overflow: hidden;
+}
+
+/*-----------------*/
+
+#titu {
+float: left;
+width: 35em;
+height: 1.2em;
+margin-top: 0.5em;
+margin-left: 0.5em;
+/*overflow: auto;*/
+}
+
+#titu  {
+font-size: 16px;
+margin-top: 0.3em;
+margin-left: 0.1em;
+color: #6d6d6d;
+}
+
+/*-----------------*/
+
+#des {
+float: left;
+width: 35em;
+height: 2.5em;
+margin-left: 0.1em;
+/*overflow: auto;*/
+}
+#des p {
+font-size: 0.8em;
+margin-top: 0em;
+margin-left: 0em;
+color: #6d6d6d;
+}
+
+#boton2 {
+  width:30em;
+  padding:0em 5em 0em 5em;
+  padding-top: 35.3em;
+}
+
+#boton2 input[type="button"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #boton2 input[type="button"]:hover {
+        background: #6D6D6D; }
+
+
+/*----------------------------------*/
+
+#noCouch {
+float: left;
+width: 25em;
+height: 3em;
+margin-top: 10em;
+margin-left: 9.5em;
+font-family: "Roboto";
+color: #6d6d6d;
+font-size: 16px;
+}

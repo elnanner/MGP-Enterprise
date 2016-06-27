@@ -1,0 +1,87 @@
+#cabeza {
+float: left;
+margin:auto;
+width: 85em;
+height: 6em;
+background-color: #c1c1c1;
+}
+
+#cabeza p {
+font-family: "Roboto"
+font-size: 16px;
+color: #ffffff;
+text-align: center;
+width:100%;
+}
+
+/*----------------------------------------------------------*/
+
+#img {
+float: left;
+width: 22em;
+height: 5em;
+margin-top: 0.3em;
+margin-left: 4em;
+}
+
+/*----------------------------------------------------------*/
+
+#sesion {
+float: left;
+width: 20em;
+height: 2em;
+margin-top: 1.8em;
+margin-left: 36em;
+}
+
+#sesionIzq {
+float: left;
+margin-top: 0em;
+margin-left: 0.5em;
+font-size: 16px;
+background-color: #96ac3c;
+border-radius: 1px;
+}
+
+#sesionIzq input[type="button"] {
+	float: left;
+      background: #96AC3C;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 8px 20px 8px 20px;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #sesionIzq input[type="button"]:hover {
+        background: #6D6D6D; }
+
+#sesionDer {
+float: left;
+margin-top: 0em;
+margin-left: 0.8em;
+background-color: #96AC3C;
+border-radius: 1px;
+}
+
+#sesionDer input[type="button"] {
+	  float: left;
+      background: #96AC3C;
+      border-radius: 1px;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 8px 22px 8px 22px;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #sesionDer input[type="button"]:hover {
+        background: #6D6D6D; }
+
+/*----------------------------------------------------------*/

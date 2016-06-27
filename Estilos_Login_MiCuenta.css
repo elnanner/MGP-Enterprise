@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f2f2f2;
+  font-family: "Roboto";
+  border-top: 30px; 
+}
+
+#cuerpo {
+	width: 70em;
+	padding-top:6em;
+}
+
+/*----------------------------------*/
+
+#MiCue {
+float: left;
+color:#6d6d6d;
+text-align: center;
+	padding-top:5em;
+  width: 20em;
+  height: 15em;
+  margin-top: 3em;
+  margin-left: 33em;
+  margin-bottom: 6.7em;
+  background: #fff;
+  box-shadow: 0px 0px 3px grey;
+  overflow: hidden
+}
+
+/*----------------------------------*/
+
+#titulo {
+  font-family: "Roboto";
+  font-size: 25px;
+  color: #96ac3c;
+  text-align: center;
+  margin-top:-1.5em;
+  margin-bottom:3em;
+
+}
+/*----------------------------------*/
+
+#formu {
+	width:15em;
+height: 10em;
+margin-top: 2.7em;
+margin-left: em;
+font-family: "Roboto";
+color: #6d6d6d;
+font-size: 16px;
+}
+#formulario {
+width: 15em;
+height: 1.5em;
+margin-top: 0.8em;
+margin-left: 2.5em;
+font-family: "Roboto";
+color: #6d6d6d;
+font-size: 16px;
+}
+
+/*----------------------------------------------------------*/

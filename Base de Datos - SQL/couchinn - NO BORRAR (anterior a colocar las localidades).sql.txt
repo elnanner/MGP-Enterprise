@@ -1,0 +1,257 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.7.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-05-2016 a las 19:10:30
+-- Versión del servidor: 5.6.20
+-- Versión de PHP: 5.5.15
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `couchinn`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE IF NOT EXISTS `comentarios` (
+`idComentarios` int(11) NOT NULL,
+  `idCouch` int(11) NOT NULL,
+  `Comentario` varchar(140) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`idComentarios`, `idCouch`, `Comentario`) VALUES
+(4, 17, 'muy bueno\r\n'),
+(6, 17, 'ffd'),
+(7, 17, 'ffd'),
+(8, 17, 'dsffgggg'),
+(9, 17, 're linda'),
+(10, 17, 'HOLA CHICOS');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `couch`
+--
+
+CREATE TABLE IF NOT EXISTS `couch` (
+`idCouch` int(11) NOT NULL,
+  `idUComun` int(11) NOT NULL,
+  `Titulo` varchar(30) NOT NULL,
+  `idTipo` int(11) NOT NULL,
+  `Capacidad` int(2) NOT NULL,
+  `Ciudad` varchar(50) NOT NULL,
+  `Descripcion` varchar(140) NOT NULL,
+  `Puntaje` int(2) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+
+--
+-- Volcado de datos para la tabla `couch`
+--
+
+INSERT INTO `couch` (`idCouch`, `idUComun`, `Titulo`, `idTipo`, `Capacidad`, `Ciudad`, `Descripcion`, `Puntaje`) VALUES
+(12, 3, 'La casa del lago', 1, 1, 'La laguna', 'Hermosa casa, ideal para tener un momento de relax y tranquilidad. Tengo una habitación extra para alojar visitantes.', 0),
+(13, 1, 'Te hace volar', 2, 5, 'El aire', 'Casa avión. Cuenta con 1 baño, 2 habitaciones y 83 ventanas para disfrutar de una hermosa vista.', 0),
+(14, 2, 'El mundo del revez', 1, 8, 'El revez', 'Original casa dada vuelta. Cuenta con 2 baños, living, wifi, y 4 habitaciones. ', 0),
+(15, 2, 'Chozita', 0, 6, 'La selva', 'Acogedora choza en la selva misionera. Cuenta con capacidad para 6 personas. Se encuentra en una aldea, ideal para compartir momentos con la', 0),
+(16, 1, 'La mejor de Todas', 1, 3, 'Paso', 'Esta es la mejor casa del mundo. Buana ubicacion. Exelente.', 100),
+(17, 1, 'Casa con buenas vibras', 1, 6, 'Pehuajo', 'La mejor casa con las mejores vibras para pasar unas buenas vacaciones tirado al sol. Con la mejor vista a la tortuga apurense que aun no se', 5),
+(18, 1, 'Vacio', 0, 0, 'Vacio', 'Vacio', 0),
+(19, 1, 'La casa', 1, 9, 'Paso', 'LA MEJOR CASA DE TODAS', 0),
+(20, 1, 'Pepe', 1, 3, 'nshbds', 'dsfrdgsdg', 0),
+(21, 1, 'GGGGGG', 2, 3, 'GGGGG', 'GGGGGGG', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagenes`
+--
+
+CREATE TABLE IF NOT EXISTS `imagenes` (
+`idImagenes` int(11) NOT NULL,
+  `idCouch` int(11) NOT NULL,
+  `Nombre` varchar(25) NOT NULL,
+  `Imagen` longblob NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`idImagenes`, `idCouch`, `Nombre`, `Imagen`) VALUES
+(31, 12, 'Casa', 0x696d6167656e65732f49443132202d20436173612e6a7067),
+(32, 13, 'Avion', 0x696d6167656e65732f49443133202d204176696f6e2e6a7067),
+(33, 14, 'Invertida', 0x696d6167656e65732f49443134202d20496e766572746964612e6a7067),
+(34, 15, 'Choza', 0x696d6167656e65732f49443135202d2043686f7a612e6a7067),
+(35, 16, 'Casa', 0x696d6167656e65732f49443136202d20436173612e6a7067),
+(36, 16, 'Casa2', 0x696d6167656e65732f49443136202d2043617361322e6a7067),
+(37, 16, 'Casa3', 0x696d6167656e65732f49443136202d2043617361332e6a7067),
+(38, 20, 'foto', 0x696d6167656e65732f49443230202d20666f746f2e6a7067),
+(39, 22, 'Foto1', 0x696d6167656e65732f49443232202d20466f746f312e6a7067),
+(40, 23, 'carpa', 0x696d6167656e65732f49443233202d2063617270612e6a7067),
+(41, 17, 'Foto1', 0x696d6167656e65732f49443137202d20466f746f312e6a7067),
+(42, 17, 'Foto2', 0x696d6167656e65732f49443137202d20466f746f322e6a7067),
+(44, 17, 'Foto4', 0x696d6167656e65732f49443137202d20466f746f342e6a7067),
+(45, 17, 'Foto5', 0x696d6167656e65732f49443137202d20466f746f352e6a7067),
+(46, 17, 'Foto6', 0x696d6167656e65732f49443137202d20466f746f362e6a7067),
+(47, 18, 'Nombre de la publicacion', ''),
+(48, 19, 'Foto1', 0x696d6167656e65732f49443139202d20466f746f312e6a7067),
+(49, 20, '454', 0x696d6167656e65732f49443230202d203435342e6a7067),
+(50, 20, 'xf', 0x696d6167656e65732f49443230202d2078662e6a7067),
+(51, 21, 'AAAAA', 0x696d6167656e65732f49443231202d2041414141412e6a7067);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `tipo` (
+`idTipo` int(11) NOT NULL,
+  `Tipo` varchar(25) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tipo`
+--
+
+INSERT INTO `tipo` (`idTipo`, `Tipo`) VALUES
+(1, 'Casa'),
+(2, 'Departamento');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ucomun`
+--
+
+CREATE TABLE IF NOT EXISTS `ucomun` (
+`idUComun` int(11) NOT NULL,
+  `Usuario` varchar(50) NOT NULL,
+  `Clave` varchar(20) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
+  `Apellido` varchar(30) NOT NULL,
+  `Edad` int(3) NOT NULL,
+  `Mail` varchar(40) NOT NULL,
+  `Premium` tinyint(1) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `ucomun`
+--
+
+INSERT INTO `ucomun` (`idUComun`, `Usuario`, `Clave`, `Nombre`, `Apellido`, `Edad`, `Mail`, `Premium`) VALUES
+(1, 'rgrassano@hotmail.com', 'rodrigo', 'Rodrigo', 'Grassano Perez', 23, 'rgrassano@hotmail.com', 1),
+(2, 'mariapaz.gp@hotmail.com', 'maria', 'Maria Paz', 'garcia', 23, 'mariapaz.gp@hotmail.com', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `upremium`
+--
+
+CREATE TABLE IF NOT EXISTS `upremium` (
+`idUPremium` int(11) NOT NULL,
+  `idUComun` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `upremium`
+--
+
+INSERT INTO `upremium` (`idUPremium`, `idUComun`) VALUES
+(1, 1);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+ ADD PRIMARY KEY (`idComentarios`);
+
+--
+-- Indices de la tabla `couch`
+--
+ALTER TABLE `couch`
+ ADD PRIMARY KEY (`idCouch`);
+
+--
+-- Indices de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+ ADD PRIMARY KEY (`idImagenes`);
+
+--
+-- Indices de la tabla `tipo`
+--
+ALTER TABLE `tipo`
+ ADD PRIMARY KEY (`idTipo`);
+
+--
+-- Indices de la tabla `ucomun`
+--
+ALTER TABLE `ucomun`
+ ADD PRIMARY KEY (`idUComun`);
+
+--
+-- Indices de la tabla `upremium`
+--
+ALTER TABLE `upremium`
+ ADD PRIMARY KEY (`idUPremium`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+MODIFY `idComentarios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `couch`
+--
+ALTER TABLE `couch`
+MODIFY `idCouch` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+MODIFY `idImagenes` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
+--
+-- AUTO_INCREMENT de la tabla `tipo`
+--
+ALTER TABLE `tipo`
+MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `ucomun`
+--
+ALTER TABLE `ucomun`
+MODIFY `idUComun` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `upremium`
+--
+ALTER TABLE `upremium`
+MODIFY `idUPremium` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

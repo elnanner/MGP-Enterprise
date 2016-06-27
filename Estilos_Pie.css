@@ -1,0 +1,53 @@
+#pie {
+float: left;
+width: 85em;
+height: 3em;
+background-color: #c1c1c1;
+background-position: center top;
+}
+
+#pie p {
+font-family: "Roboto";
+font-size: 15px;
+color: #6d6d6d;
+margin-top: 0em;
+margin-left: 0em;
+}
+
+/*----------------------------------------------------------*/
+
+#mgp {
+float: left;
+width: 45em;
+height: 1.5em;
+margin-top: 1em;
+margin-left: 2em;
+}
+
+/*----------------------------------------------------------*/
+
+#contacto {
+float: left;
+width: 15em;
+height: 2.6em;
+margin-top: 0.2em;
+margin-left: 21em;
+}
+
+#imagen {
+float: left;
+width: 2.6em;
+height: 2.6em;
+margin-top: 0.2em;
+margin-left: 2.2em;
+}
+
+#mail {
+float: left;
+width: 10em;
+height: 1.5em;
+margin-top: 0.7em;
+margin-left: 0.2em;
+}
+
+/*----------------------------------------------------------*/

@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f2f2f2;
+  font-family: "Roboto";
+  border-top: 30px; 
+}
+
+#cuerpo {
+	width: 70em;
+	padding-top:6em;
+}
+
+#titulo {
+  font-family: "Roboto";
+  font-size: 25px;
+  color: #96ac3c;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 1em;
+}
+
+#boton {
+width:15em;
+  margin-left:2em;
+  margin-top:2em;
+
+}
+
+#boton1 {
+  margin-top:6em;
+}
+
+#boton1 input[type="submit"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #boton1 input[type="submit"]:hover {
+        background: #6D6D6D; }
+
+        #boton2 input[type="button"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #boton2 input[type="button"]:hover {
+        background: #6D6D6D; }
+
+#Subir {
+  float: left;
+  width: 30em;
+  height: 25em;
+  margin-top: 0.7em;
+  margin-left: 30em;
+  margin-bottom: 3.7em;
+  background: #fff;
+  box-shadow: 0px 0px 3px grey;
+  overflow: hidden;
+}
+
+#nombre {
+	font-family: "Roboto";
+  font-size: 20px;
+  color: #6d6d6d;
+  padding-bottom: 0.5em;
+  padding-top: 1.5em;
+  margin-left:2em;
+}
+
+#subBus {
+float: left;
+width: 30em;
+height: 36em;
+margin-left:1em;
+text-align: left;
+}
+
+#formulario1 {
+  float:left;
+  color:#6d6d6d;
+  font-size: 16px;
+  margin-left:4em;
+  margin-right:10em;
+  margin-bottom:1em;
+  margin-top:2em;
+
+}
+
+#formulario {
+width: 32em;
+height: 1.5em;
+padding-top:-2em;
+margin-top: 2em;
+margin-bottom:1em;
+margin-left: 0em;
+font-family: "Roboto";
+color: #6d6d6d;
+font-size: 18px;
+}
+
+input[type="file"] {
+	margin-left:-10em;
+}
+/*#Subir {
+float: left;
+width: 25em;
+height: 13em;
+margin-top: 9em;
+margin-left: 12.5em;
+border: 0.35em solid #96ac3c;
+border-radius: 1em;
+}
+
+/*----------------------------------*/
+
+/*#formulario {
+width: 14em;
+height: 1.5em;
+margin-top: 0.3em;
+margin-left: 2.2em;
+font-family: "arial", Times, serif;
+color: #FFFFFF;
+font-size: 1.4em;
+}
+
+#formularioBotonCancelar {
+float: left;
+width: 3em;
+height: 1.6em;
+margin-top: 0em;
+margin-left: 0.1em;
+}
+
+#formularioBoton {
+float: left;
+width: 4.5em;
+height: 1.6em;
+margin-top: 0em;
+margin-left: 0.6em;
+}
+
+/*----------------------------------------------------------*/

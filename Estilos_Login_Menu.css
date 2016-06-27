@@ -1,0 +1,123 @@
+blockquote, ol, ul, li,table, menu, nav {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+menu, nav {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Roboto";
+}
+
+.clearfix {
+  clear: both;
+}
+
+.wrap {
+  width: 85em;
+  margin-top: -5.95em;
+}
+
+nav {
+  height: 2.5em;
+  background: #c1c1c1;/* -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
+  /*background-image: linear-gradient(#fff, #ccc);*/
+  /*box-shadow: 0em 0em 0.28em 0.14em rgba(0,0,0,0.4);*/
+  position: relative;
+}
+
+.menu li {
+  float: left;
+  position: relative;
+}
+
+.menu li a {
+  color: #6d6d6d;
+  display: block;
+  font-size: 16px;
+  line-height: 1.43em;
+  padding:0em 2em 0em 2em;
+  margin: 0.5em 2.15em;
+  vertical-align: middle;
+  text-decoration: none;
+  text-align: center;
+}
+
+.menu ul {
+  position: absolute;
+  left: -714.21em;
+  list-style: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.menu ul li {
+  float: none;
+  padding-top:0.7em;
+ height:2.5em;
+}
+
+.menu ul a {
+  white-space: nowrap;
+}
+
+.menu li:hover ul {
+  background: #c1c1c1;
+  /*box-shadow: inset 0em 0.14em 0.28em rgba(0,0,0,0.4);*/
+  left: 0em;
+  opacity: 1;
+  margin-left:-1.2em;
+}
+
+.menu li>a:hover{
+  color: #96ac3c;
+}
+
+/*.menu li:hover a {
+  /*background: -webkit-gradient(linear, center top, center bottom, from(#ccc), to(#ededed));/*
+  background-image: linear-gradient(#96ac3c, #ABBD63);
+  border-radius: 0.86em;
+  /*box-shadow: inset 0em 0em 0.7em 0.7em rgba(0,0,0,0.1);
+  color: #222;
+}*/
+
+.menu li:hover ul a {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+}
+
+/*.menu li:hover ul li a:hover {
+  background: -webkit-gradient(linear, center top, center bottom, from(#eee), to(#fff));
+  background-image: linear-gradient(#96ac3c, #ABBD63);
+  border-radius: 0.86em;
+  box-shadow: inset 0em 0em 0.28em 0.14em rgba(0,0,0,0.3);
+}*/
+
+
+

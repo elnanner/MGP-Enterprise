@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f2f2f2;
+  font-family: "Roboto";
+  border-top: 30px; 
+}
+
+#cuerpo {
+	width: 70em;
+	padding-top:6em;
+}
+
+/*----------------------------------*/
+
+#AceptarRechazar {
+float: left;
+color:#6d6d6d;
+text-align: center;
+	padding-top:4em;
+  width: 40em;
+  height: 21em;
+  margin-top: -5.3em;
+  margin-left: 25em;
+  margin-bottom: 3.7em;
+  background: #fff;
+  box-shadow: 0px 0px 3px grey;
+  overflow: hidden;
+}
+
+
+#boton {
+	width:25em;
+  margin-left:7.5em;
+  margin-top:6em;
+
+}
+
+#boton1 input[type="submit"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #boton1 input[type="submit"]:hover {
+        background: #6D6D6D; }
+
+        #boton2 input[type="submit"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #boton2 input[type="submit"]:hover {
+        background: #6D6D6D; }
+
+        #boton3 input[type="button"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      #boton3 input[type="button"]:hover {
+        background: #6D6D6D; }
+
+
+/*body {
+margin: auto;
+width: 70em;
+margin-top: 0.5em;
+background-color: #6D6D6D;
+}
+
+/*----------------------------------------------------------*/
+
+/*#cuerpo {
+float: left;
+width: 70em;
+height: 32em;
+}
+
+#cuerpo p {
+font-family: "arial", Times, serif;
+color: #FFFFFF;
+margin-top: 0em;
+margin-left: 0em;
+}
+
+/*----------------------------------------------------------*/
+
+/*#AceptarRechazar {
+float: left;
+width: 37em;
+height: 8em;
+margin-top: 10.5em;
+margin-left: 16.5em;
+border: 0.35em solid #96ac3c;
+border-radius: 1em;
+}
+
+/*----------------------------------*/
+
+/*#formulario {
+width: 30em;
+height: 1.5em;
+margin-top: 1em;
+margin-left: 0.5em;
+font-family: "arial", Times, serif;
+color: #FFFFFF;
+font-size: 1.2em;
+text-align: center;
+}
+
+#formularioBoton {
+float: left;
+width: 4.5em;
+height: 1.6em;
+margin-top: 1em;
+margin-left: 4em;
+}
+
+/*----------------------------------------------------------*/
