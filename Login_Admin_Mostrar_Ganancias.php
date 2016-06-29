@@ -57,10 +57,9 @@ include("Conectar.php");
                 echo "numero de tuplas ".$numTuplas;
                 if($numTuplas <> 0){//hay tuplas
                   //for ($i=0; $i < $numTuplas; $i++) {
-                    $dato =mysql_fetch_array($tuplas);
+                  while($dato =mysql_fetch_array($tuplas)){
 	                  mostrar($fechaDesde,$fechaHasta,$dato,$numTuplas);//muestro los datos
-                  //}
-
+                	}
                 }
                 else{
                   echo " No Existen datos para as fechas ingresadas";
