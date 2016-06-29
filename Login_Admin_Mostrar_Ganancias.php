@@ -39,6 +39,8 @@ include("Conectar.php");
             <tr>
               <td>Fecha Desde</td>
               <td>Fecha Hasta</td>
+							<td>Fecha Alta Usuario</td>
+							<td>Usuario</td>
               <td>Ganancia Obtenida</td>
             </tr>
 
@@ -95,11 +97,18 @@ include("Conectar.php");
 </html>
 <?php
   function mostrar($fechaDesde,$fechaHasta,$dato,$numTuplas){
-    $res = $numTuplas*100;
+		$queryNombreUsuario = "SELECT Usuario FROM ucomun WHERE (idUComun ='".$dato['idUsuario']."')";
+		$resultadoUsuario = mysql_query($queryNombreUsuario);
+	  $nombreUsuario = mysql_fetch_array($resultadoUsuario);
+		$usuarioPost = $nombreUsuario['Usuario'];
+		$_POST['datoUsuario']=$usuarioPost;// para pasar el dato la re puta madreeeeeee!!!no me saliaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!!aaaaaaaaaaa!!!
     echo "<tr>";
     echo "<td>".$fechaDesde."</td>";
     echo "<td>".$fechaHasta."</td>";
-  //  echo "<td>".$res."</td>";
-    echo "</tr>";
+		echo "<td>".$dato['fecha']."</td>";
+    echo "<td><form action='DatosUsuario.php' method='post'>
+		<input type='submit' id='botonUsuario' name='datoUsuario' value='".$usuarioPost."' />
+	  </form> </td>";//lo que me  costó por no mirar la columnda de la BBDD jajaj
+		echo "</tr>";
   }
  ?>

@@ -1,7 +1,7 @@
-<?php 
+<?php
 include("Conectar.php");
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <head>
    <title> CouchInn </title>
    <link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Admin_Menu.css"/>
@@ -21,8 +21,8 @@ include("Conectar.php");
          </li>
          <li><a href=''> Generar Reportes</a>
             <ul>
-               <li><a href='.php'>Ganancias</a></li>
-               <li><a href='.php'>Reservas Aceptadas</a></li>
+               <li><a href='Login_Admin_Mostrar_Ganancias.php'>Ganancias</a></li>
+               <li><a href='Login_Admin_Reservas_Aceptadas.php'>Reservas Aceptadas</a></li>
             </ul>
          </li>
          <li><a href='.php'> Eliminar Usuario</a></li>

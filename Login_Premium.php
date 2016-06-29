@@ -1,15 +1,15 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['estaLoggeadoUsuario']) || isset($_SESSION['estaLoggeadoUsuario']) && $_SESSION['estaLoggeadoUsuario'] == false){
 	die("Ud. no tiene acceso para visitar esta secci&oacute;n.");
 }
 include("Conectar.php");
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <head>
 	<title> CouchInn </title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Premium.css"/>	
+	<link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Premium.css"/>
 </head>
 <body>
 	<?php
@@ -56,12 +56,17 @@ include("Conectar.php");
 						$boolean=true;
 						$cad= "update ucomun set ucomun.Premium='$boolean' where ucomun.idUComun='$idUComun'";
 						mysql_query($cad);
+						/*aqui se ingresa una nueva tupla a la tabla de ganancias con la fecha actual*/
+						$fechaActual = date('Y-m-d');//como lo guarda en la tabla el tipo date
+						$actualUser = $_SESSION['idUComun'];//guardo el id de usuario que paso a premium para meterlo en la tabla
+						$insertarFecha = "INSERT INTO ganancias (fecha, idUsuario) VALUES('$fechaActual','$actualUser')";
+						mysql_query($insertarFecha);
 						?>
 						<script type="text/javascript">
 							alert ("La operacion fue correcta \nUsted ya es un usuario premium");
 							location.href='Login_Index.php';
 						</script>
-						<?php						
+						<?php
 					}
 					else {
 						?>

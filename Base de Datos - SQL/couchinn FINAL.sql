@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2016 a las 02:53:18
+-- Tiempo de generación: 16-06-2016 a las 00:06:12
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -6238,22 +6238,17 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `Aceptada` tinyint(1) NOT NULL,
   `PuntuarCouch` tinyint(1) NOT NULL,
   `PuntuarViajero` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Volcado de datos para la tabla `reserva`
 --
 
 INSERT INTO `reserva` (`idReserva`, `idCouch`, `idUComunCouch`, `idUComun`, `FechaInicio`, `FechaFin`, `CapacidadPersonas`, `Aceptada`, `PuntuarCouch`, `PuntuarViajero`) VALUES
-(26, 32, 2, 3, '2016-05-10', '2016-05-15', 1, 1, 0, 0),
-(27, 32, 2, 3, '2016-07-14', '2016-07-18', 2, 2, 0, 0),
-(30, 34, 3, 2, '2016-07-23', '2016-07-25', 2, 1, 0, 0),
-(31, 34, 3, 2, '2016-07-24', '2016-07-27', 1, 2, 0, 0),
-(32, 34, 3, 2, '2016-07-26', '2016-07-29', 2, 2, 0, 0),
-(33, 29, 3, 2, '2016-06-27', '2016-06-30', 2, 2, 0, 0),
-(34, 29, 3, 2, '2016-06-28', '2016-07-02', 2, 2, 0, 0),
-(35, 29, 3, 2, '2016-06-29', '2016-07-10', 1, 2, 0, 0),
-(36, 25, 3, 2, '2016-03-12', '2016-03-18', 2, 1, 0, 0);
+(26, 32, 2, 3, '2016-06-10', '2016-06-13', 1, 1, 0, 0),
+(27, 32, 2, 3, '2016-06-16', '2016-06-20', 2, 1, 0, 0),
+(28, 34, 3, 2, '2016-06-11', '2016-06-14', 1, 1, 0, 0),
+(29, 34, 3, 2, '2016-06-16', '2016-06-20', 2, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6412,7 +6407,7 @@ MODIFY `idImagenes` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=107;
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
+MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `tarjetas`
 --
