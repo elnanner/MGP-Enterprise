@@ -37,11 +37,11 @@ include("Conectar.php");
         <table>
           <thead>
             <tr>
-              <td>Fecha Desde</td>
-              <td>Fecha Hasta</td>
-							<td>Fecha Alta Usuario</td>
-							<td>Usuario</td>
-              <td>Ganancia Obtenida</td>
+              <th>Fecha Desde</th>
+              <th>Fecha Hasta</th>
+							<th>Fecha Alta Usuario</th>
+							<th>Usuario</th>
+              <th style="text-align:left">Ganancia Obtenida</th><!--la tiro a la izq-->
             </tr>
 
           </thead>
@@ -55,24 +55,32 @@ include("Conectar.php");
                 $numTuplas=mysql_num_rows($tuplas);
                 //echo "fecha ".$fechaDesde;
                 echo "numero de tuplas ".$numTuplas;
+								$gananciaTotal = 0;//si hay tuplas las calcula en el if, sino muestra 0
                 if($numTuplas <> 0){//hay tuplas
                   //for ($i=0; $i < $numTuplas; $i++) {
                   while($dato =mysql_fetch_array($tuplas)){
-	                  mostrar($fechaDesde,$fechaHasta,$dato,$numTuplas);//muestro los datos
+	                  mostrarUsuario($fechaDesde,$fechaHasta,$dato,$numTuplas);//muestro los datos
                 	}
+									$gananciaTotal = $numTuplas*100;
                 }
                 else{
                   echo " No Existen datos para as fechas ingresadas";
                 }
               }
             ?>
-             <tr>
-               <td id="1"></td>
-               <td id="2"></td>
-               <td id='3'></td>
-             </tr>
+
           </tbody>
         </table>
+				<table>
+					<thead>
+							<th style="text-align:right;padding-right: 8px">Ganancia Total</th>
+					</thead>
+				</table>
+				<table>
+					<thead>
+							<th style="text-align:right;padding-right: 8px"><p><?php echo $gananciaTotal ?></p></th>
+					</thead>
+				</table>
     </div>
       <script type="text/javascript">
         function validarFechas(){
@@ -90,24 +98,30 @@ include("Conectar.php");
           alert("Desde: "+fechaDesde+"  "+"Hasta: "+fechaHasta);
           return true;
         }
-      </script>
-      <?php	include("Pie.php"); 	?>
+				</script>
+      <?php	include("Pie.php");	?>
   </body>
 </html>
 <?php
-  function mostrar($fechaDesde,$fechaHasta,$dato,$numTuplas){
-		$queryNombreUsuario = "SELECT Usuario FROM ucomun WHERE (idUComun ='".$dato['idUsuario']."')";
-		$resultadoUsuario = mysql_query($queryNombreUsuario);
-	  $nombreUsuario = mysql_fetch_array($resultadoUsuario);
-		$usuarioPost = $nombreUsuario['Usuario'];
-		$_POST['datoUsuario']=$usuarioPost;// para pasar el dato la re puta madreeeeeee!!!no me saliaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!!aaaaaaaaaaa!!!
-    echo "<tr>";
-    echo "<td>".$fechaDesde."</td>";
-    echo "<td>".$fechaHasta."</td>";
-		echo "<td>".$dato['fecha']."</td>";
-    echo "<td><form action='DatosUsuario.php' method='post'>
-		<input type='submit' id='botonUsuario' name='datoUsuario' value='".$usuarioPost."' />
-	  </form> </td>";//lo que me  costó por no mirar la columnda de la BBDD jajaj
-		echo "</tr>";
-  }
+function mostrarUsuario($fechaDesde,$fechaHasta,$dato,$numTuplas){
+	$monto = 100;//este se podria poner de otra manera para una futura modif pero no lo pide
+	$queryNombreUsuario = "SELECT Usuario FROM ucomun WHERE (idUComun ='".$dato['idUsuario']."')";
+	$resultadoUsuario = mysql_query($queryNombreUsuario);
+	$nombreUsuario = mysql_fetch_array($resultadoUsuario);
+	$usuarioPost = $nombreUsuario['Usuario'];
+	$_POST['datoUsuario']=$usuarioPost;// para pasar el dato la re puta madreeeeeee!!!no me saliaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!!aaaaaaaaaaa!!!
+	echo "<tr>";
+	echo "<td>".$fechaDesde."</td>";
+	echo "<td>".$fechaHasta."</td>";
+	echo "<td>".$dato['fecha']."</td>";
+	usuarioTipoEnlace($usuarioPost);
+	echo "<td style='text-align:left'>".$monto."</td>";
+	echo "</tr>";
+}
+function usuarioTipoEnlace($usuario){
+	echo "<td><form action='DatosUsuario.php' method='post'>
+  <input type='submit' style ='background: transparent;border: none;font-weight:bolder';id='botonUsuario' name='datoUsuario' value='".$usuario."' />
+  </form> </td>";
+}
+
  ?>

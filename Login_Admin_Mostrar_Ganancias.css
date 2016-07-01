@@ -15,3 +15,6 @@ tbody tr:hover{
   height:800px;
   background:grey;
 }
+td{
+  text-align: center;
+}

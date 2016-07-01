@@ -25,7 +25,7 @@
           if(isset($_POST['datoUsuario']) && !empty($_POST['datoUsuario'])){
             $usuario = $_POST['datoUsuario'];
             echo "<tr>";
-            echo "<td>".mostrarUsuario($usuario)."</td>";
+            echo "<td>".usuarioTipoEnlace($usuario)."</td>";
             echo "<td></td>";
             echo "<td></td>";
             echo "<td></td>";
@@ -41,9 +41,9 @@
   </body>
 </html>
 <?php
-function mostrarUsuario($user){// hay que incluir esta funcion en un archivo de funciones y linkearlo desde los archivos
+function usuarioTipoEnlace($usuario){
   echo "<td><form action='DatosUsuario.php' method='post'>
-  <input type='submit' style ='background: transparent;border: none;font-weight:bolder';id='botonUsuario' name='datoUsuario' value='".$user."' />
+  <input type='submit' style ='background: transparent;border: none;font-weight:bolder';id='botonUsuario' name='datoUsuario' value='".$usuario."' />
   </form> </td>";
 }
 
