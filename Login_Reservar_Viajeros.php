@@ -25,7 +25,12 @@ include("Conectar.php");
 			</div>
 			<div id= "subLis">
 				<?php
-					$query = "SELECT * FROM ucomun INNER JOIN reserva ON ucomun.idUComun=reserva.idUComun WHERE reserva.idUComunCouch=".$_SESSION['idUComun']." ORDER BY reserva.idReserva DESC";
+					$query = "SELECT * 
+							FROM ucomun 	
+							INNER JOIN reserva ON ucomun.idUComun=reserva.idUComun 
+							INNER JOIN couch ON reserva.idCouch=couch.idCouch
+							INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
+							WHERE reserva.idUComunCouch=".$_SESSION['idUComun']." ORDER BY reserva.idReserva DESC";
 					$q = mysql_query($query, $link);
 					$num=mysql_num_rows ($q);
 
@@ -50,6 +55,10 @@ include("Conectar.php");
 
 								echo '<div id="res">';
 									echo '<b>Fecha Ingreso:&nbsp</b><p>'.$resCouch['FechaInicio'].'&nbsp</p><b>&nbspFecha Egreso:&nbsp</b><p>'.$resCouch['FechaFin'].'</p>';
+								echo '</div>';
+
+								echo '<div id="loc">';
+									echo '<p> '.$resCouch['Titulo'].', '.$resCouch['Localidad'].' </p>';
 								echo '</div>';
 
 								echo '<div id="boton">';

@@ -120,6 +120,24 @@ color: #6d6d6d;
 
 /*----------------------------------*/
 
+#loc {
+float: left;
+width: 35em;
+height: 2.5em;
+margin-left: 0em;
+margin-top:-0.5em;
+/*overflow: auto;*/
+}
+
+#loc p {
+font-size: 0.8em;
+margin-top: 0em;
+margin-left: 0em;
+color: #6d6d6d;
+}
+
+/*----------------------------------*/
+
 #noCouch {
 float: left;
 width: 30em;
@@ -170,7 +188,7 @@ margin-left: 26em;
 float: left;
 width: 5em;
 height: 1.2em;
-margin-top: -1.2em;
+margin-top: -2.5em;
 margin-left: 5.5em;
 }
 
