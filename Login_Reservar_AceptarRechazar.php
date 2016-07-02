@@ -52,11 +52,18 @@ include("Conectar.php");
 						$boo= false;
 						$cadRech= "update reserva set reserva.Aceptada='$boo' where reserva.idReserva='$idReserva'";
 						mysql_query($cadRech);
+						//PARA EL MAIL 
+						$query = "SELECT * 
+								  FROM couch 
+								  INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
+								  WHERE couch.idCouch=".$resCouch['idCouch']."";
+						$q = mysql_query($query, $link);
+						$resTituloLugar=mysql_fetch_array($q);
 						//ENVIA UN MAIL AL VIAJERO PARA INFORMARLE QUE LE RECHAZARON LA RECERVA
 						$query = "SELECT * FROM ucomun WHERE ucomun.idUComun=".$resCouch['idUComun']."";
 						$q = mysql_query($query, $link);
 						$resViajero=mysql_fetch_array($q);
-						$mensajeAlViajero = "Hola, desde CouchInn nos ponemos en contacto con usted para comunicarle que la reserva solicitada ha sido rechazada.\r\n Gracias por usar CouchInn";
+						$mensajeAlViajero = "Hola, desde CouchInn nos ponemos en contacto con usted para comunicarle que la reserva solicitada ha sido rechazada. \r\n En el hospedaje: ".$resTituloLugar['Titulo']." en la localidad: ".$resTituloLugar['Localidad']." entre las fechas: ".$resCouch['FechaInicio']." y ".$resCouch['FechaFin']." \r\n Gracias por usar CouchInn";
 						mail($resViajero['Mail'], 'CouchInn - Reserva Rechazada', $mensajeAlViajero);
 
 						?>
@@ -112,16 +119,23 @@ include("Conectar.php");
 							$cadAcep= "update reserva set reserva.Aceptada='$boo' where reserva.idReserva='$idReserva'";
 							mysql_query($cadAcep);  //PONE EN TRUE LA RESERVA, PASA A ESTAR ACEPTADA
 							
+							//PARA EL MAIL 
+							$query = "SELECT * 
+									  FROM couch 
+									  INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
+									  WHERE couch.idCouch=".$resCouch['idCouch']."";
+							$q = mysql_query($query, $link);
+							$resTituloLugar=mysql_fetch_array($q);
 							//PARA EL DUEÑO DEL COUCH (ENVIO DATOS DEL VIAJERO)
 							$query = "SELECT * FROM ucomun WHERE ucomun.idUComun=".$resCouch['idUComun']."";
 							$q = mysql_query($query, $link);
 							$resViajero=mysql_fetch_array($q);
-							$mensajeAlDueno = "Hola, desde CouchInn nos ponemos en contacto con usted para enviarle la informacion del viajero \r\n Nombre: ".$resViajero['Nombre']."\r\n Apellido: ".$resViajero['Apellido']."\r\n Edad: ".$resViajero['Edad']."\r\n Mail: ".$resViajero['Mail']."\r\n Puntaje: ".$resViajero['Puntaje']."\r\n Gracias por usar CouchInn";
+							$mensajeAlDueno = "Hola, desde CouchInn nos ponemos en contacto con usted para enviarle la informacion del viajero \r\n Nombre: ".$resViajero['Nombre']."\r\n Apellido: ".$resViajero['Apellido']."\r\n Edad: ".$resViajero['Edad']."\r\n Mail: ".$resViajero['Mail']."\r\n Puntaje: ".$resViajero['Puntaje']."\r\n En el hospedaje: ".$resTituloLugar['Titulo']." en la localidad: ".$resTituloLugar['Localidad']." entre las fechas: ".$resCouch['FechaInicio']." y ".$resCouch['FechaFin']." \r\n Gracias por usar CouchInn";
 							//PARA EL VIAJERO (ENVIO DATOS DEL DUEÑO DEL COUCH)
 							$query = "SELECT * FROM ucomun WHERE ucomun.idUComun=".$resCouch['idUComunCouch']."";
 							$q = mysql_query($query, $link);
 							$resDueno=mysql_fetch_array($q);
-							$mensajeAlViajero = "Hola, desde CouchInn nos ponemos en contacto con usted para enviarle la informacion del dueño del couch \r\n Nombre: ".$resDueno['Nombre']."\r\n Apellido: ".$resDueno['Apellido']."\r\n Edad: ".$resDueno['Edad']."\r\n Mail: ".$resDueno['Mail']."\r\n Puntaje: ".$resDueno['Puntaje']."\r\n Gracias por usar CouchInn";
+							$mensajeAlViajero = "Hola, desde CouchInn nos ponemos en contacto con usted para enviarle la informacion del dueño del couch \r\n Nombre: ".$resDueno['Nombre']."\r\n Apellido: ".$resDueno['Apellido']."\r\n Edad: ".$resDueno['Edad']."\r\n Mail: ".$resDueno['Mail']."\r\n Puntaje: ".$resDueno['Puntaje']."\r\n En el hospedaje: ".$resTituloLugar['Titulo']." en la localidad: ".$resTituloLugar['Localidad']." entre las fechas: ".$resCouch['FechaInicio']." y ".$resCouch['FechaFin']." \r\n Gracias por usar CouchInn";
 
 							mail($resDueno['Mail'], 'CouchInn - Reserva Aceptada', $mensajeAlDueno);  //PARA EL DUEÑO DEL COUCH (ENVIO DATOS DEL VIAJERO)
 							mail($resViajero['Mail'], 'CouchInn - Reserva Aceptada', $mensajeAlViajero);  //PARA EL VIAJERO (ENVIO DATOS DEL DUEÑO DEL COUCH)
@@ -139,11 +153,18 @@ include("Conectar.php");
 							$boo= false;
 							$cadRech= "update reserva set reserva.Aceptada='$boo' where reserva.idReserva='$idReserva'";
 							mysql_query($cadRech);
+							//PARA EL MAIL 
+							$query = "SELECT * 
+									  FROM couch 
+									  INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
+									  WHERE couch.idCouch=".$resCouch['idCouch']."";
+							$q = mysql_query($query, $link);
+							$resTituloLugar=mysql_fetch_array($q);
 							//ENVIA UN MAIL AL VIAJERO PARA INFORMARLE QUE LE RECHAZARON LA RECERVA
 							$query = "SELECT * FROM ucomun WHERE ucomun.idUComun=".$resCouch['idUComun']."";
 							$q = mysql_query($query, $link);
 							$resViajero=mysql_fetch_array($q);
-							$mensajeAlViajero = "Hola, desde CouchInn nos ponemos en contacto con usted para comunicarle que la reserva solicitada ha sido rechazada.\r\n Gracias por usar CouchInn";
+							$mensajeAlViajero = "Hola, desde CouchInn nos ponemos en contacto con usted para comunicarle que la reserva solicitada ha sido rechazada. \r\n En el hospedaje: ".$resTituloLugar['Titulo']." en la localidad: ".$resTituloLugar['Localidad']." entre las fechas: ".$resCouch['FechaInicio']." y ".$resCouch['FechaFin']." \r\n Gracias por usar CouchInn";
 							mail($resViajero['Mail'], 'CouchInn - Reserva Rechazada', $mensajeAlViajero);
 
 							?>
