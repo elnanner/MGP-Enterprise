@@ -33,8 +33,8 @@ include("Conectar.php");
 	              <th>Fecha Desde</th>
 	              <th>Fecha Hasta</th>
 								<th>Fecha Alta Usuario</th>
-								<th>Usuario</th>
-	              <th style="text-align:left">Ganancia Obtenida</th><!--la tiro a la izq-->
+								<th class="columnaUsuario">Usuario</th>
+	              <th id='thGananciaObtenida'>Ganancia Obtenida</th><!--la tiro a la izq-->
 	            </tr>
 	          </thead>
 					</table>
@@ -129,8 +129,8 @@ function mostrarUsuario($fechaDesde,$fechaHasta,$dato,$numTuplas){
 	echo "</tr>";
 }
 function usuarioTipoEnlace($usuario){
-	echo "<td><form action='DatosUsuario.php' method='post'>
-  <input type='submit' style ='background: transparent;border: none;font-weight:bolder';id='botonUsuario' name='datoUsuario' value='".$usuario."' />
+	echo "<td class='columnaUsuario'><form class='columnaUsuario'action='DatosUsuario.php' method='post'>
+  <input class='columnaUsuario'type='submit' style ='background: transparent;border: none;font-weight:bolder';id='botonUsuario' name='datoUsuario' value='".$usuario."' />
   </form> </td>";
 }
 
