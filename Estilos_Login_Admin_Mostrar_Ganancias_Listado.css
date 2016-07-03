@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f2f2f2;
+  font-family: "Roboto";
+  border-top: 30px;
+}
+
+#cuerpo {/*estilo copiado del menu que aparece en todas las paginas de admin*/
+	width: 70em;
+	padding-top:6em;
+}
+
+
+/*----------------------------------*/
+
+#titulo {
+  font-family: "Roboto";
+  font-size: 25px;
+  color: #96ac3c;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 1.5em;
+}
+
+/*----------------------------------*/
+
+.contenido-ganancias{
+  width: 50em;
+  height: 100%;
+  margin-top: 0.7em;
+  margin-left: 17em;
+  margin-right: 17em;
+  margin-bottom: 3.7em;
+  padding: 0.5em;
+  background: #fff;
+  box-shadow: 0px 0px 3px grey;
+  overflow: hidden;
+}
+
+/*----------------------------------*/
+
+table{
+  color:#6d6d6d;
+  background: #c1c1c1;
+  width: 100%;
+}
+
+/*----------------------------------*/
+
+td{
+  background: #f2f2f2;
+  padding: 5px;
+  text-align: center;
+}
+/*----------------------------------*/
+
+th{
+  font-size: 16px;
+  font-family: "Roboto";
+  font-weight: normal;
+  padding: 0.4em;
+  color: #6d6d6d;
+}
+
+/*----------------------------------*/
+.tablaGanancia{
+  float: right;
+}
+
+/*----------------------------------*/
+#formulario {
+width: 40em;
+height: 2em;
+margin-top:3em;
+margin-right: 25%;
+margin-left: 25%;
+font-family: "Roboto";
+color: #6d6d6d;
+font-size: 16px;
+overflow: hidden;
+}
+/*----------------------------------*/
+
+#boton {
+  width:15em;
+  margin-left:17em;
+  margin-top:8em;
+
+}
+
+input[type="button"] {
+      background: #96AC3C;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Roboto";
+      font-size: 16px;
+      padding: 15px;
+      width: 100%;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+input[type="button"]:hover {
+        background: #6D6D6D; }
+
+/*----------------------------------*/
+.separador{
+  width: 100%;
+  height: 30px;
+}
+.contenido-tablas{
+  padding: 8px;
+
+}
