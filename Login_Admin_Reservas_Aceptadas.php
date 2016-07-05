@@ -32,10 +32,10 @@
           <p> Reporte de Reservas Aceptadas </p>
           <form action="Login_Admin_Reservas_Aceptadas_Listado.php" class="ingreso-fechas"  method="post">
               <div id="formulario">
-               Seleccione Fecha Desde: <input type="date" id='fd' name="fechaDesde" value="" min="2016-01-01" REQUIRED>
+               Seleccione Fecha Desde: <input type="date" id='fd' name="fechaDesde" value="" min="2016-01-01" max="2026-01-01" REQUIRED>
               </div>
               <div id="formulario">
-                Seleccione Fecha Hasta: <input type="date" id='fh' name="fechaHasta" value="" min="2016-01-01" REQUIRED>
+                Seleccione Fecha Hasta: <input type="date" id='fh' name="fechaHasta" value="" min="2016-01-01" max="2026-01-01"REQUIRED>
               </div>
               <br>
               <div id="boton">
@@ -57,7 +57,7 @@
             alert("Se deben ingresar ambas fechas");
             return false;
           }
-					if(fechaDesde > '2016-01-01' && fechaHasta > '2016-01-01' ){
+					if(fechaDesde >= '2016-01-01' && fechaHasta >= '2016-01-01' ){
 	          if(fechaDesde>fechaHasta){
 	            alert("La fecha 'desde' no puede ser posterior a la fecha 'hasta'");
 	            return false;
