@@ -33,8 +33,8 @@ include("Conectar.php");
 	              <th>Fecha Desde</th>
 	              <th>Fecha Hasta</th>
 								<th>Fecha Alta Usuario</th>
-								<th class="columnaUsuario">Usuario</th>
-	              <th id='thGananciaObtenida'>Ganancia Obtenida</th><!--la tiro a la izq-->
+								<th	class='col-usuario' style="font-weight:bold;">Usuario</th>
+	              <th>Ganancia Obtenida</th><!--la tiro a la izq-->
 	            </tr>
 	          </thead>
 					</table>
@@ -68,7 +68,7 @@ include("Conectar.php");
 		        </table>
 
 						<div class="separador">
-							<!--solamente es para separar las tablas-->
+						<!--solamente es para separar las tablas-->
 						</div>
 
 						<table class="tablaGanancia">
@@ -77,14 +77,14 @@ include("Conectar.php");
 							</thead>
 							<tbody>
 								<tr>
-									<td style="text-align:right;padding-right: 8px">
+									<td class="tablaGanancia">
 										<?php if (isset($gananciaTotal)) { echo $gananciaTotal; } ?></th>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="separador">
-							<!--solamente es para separar las tablas-->
+							<!--solamente es para se	parar las tablas-->
 						</div>
 						<div id="boton">
 							<input type="button" name="volver" value="Volver" onClick="location.href='Login_Admin_Mostrar_Ganancias.php'"/>
@@ -121,16 +121,16 @@ function mostrarUsuario($fechaDesde,$fechaHasta,$dato,$numTuplas){
 	$usuarioPost = $nombreUsuario['Usuario'];
 	$_POST['datoUsuario']=$usuarioPost;// para pasar el dato la re puta madreeeeeee!!!no me saliaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!!aaaaaaaaaaa!!!
 	echo "<tr>";
-	echo "<td>".$fechaDesde."</td>";
-	echo "<td>".$fechaHasta."</td>";
-	echo "<td>".$dato['fecha']."</td>";
+	echo "<td class='col-fechaDesde'>".$fechaDesde."</td>";
+	echo "<td class='col-fechaHasta'>".$fechaHasta."</td>";
+	echo "<td class='col-fechaAlta'>".$dato['fecha']."</td>";
 	usuarioTipoEnlace($usuarioPost);
-	echo "<td >".$monto."</td>";
+	echo "<td class='col-gananciaObtenida' >".$monto."</td>";
 	echo "</tr>";
 }
 function usuarioTipoEnlace($usuario){
-	echo "<td class='columnaUsuario'><form class='columnaUsuario'action='DatosUsuario.php' method='post'>
-  <input class='columnaUsuario'type='submit' style ='background: transparent;border: none;font-weight:bolder';id='botonUsuario' name='datoUsuario' value='".$usuario."' />
+	echo "<td class='col-usuario'><form action='DatosUsuario.php' method='post'>
+  <input type='submit' style ='color: #96ac3c; 	background: transparent;border: none;font-weight:bolder';id='botonUsuario' name='datoUsuario' value='".$usuario."' />
   </form> </td>";
 }
 

@@ -1,14 +1,14 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['estaLoggeadoUsuario']) || isset($_SESSION['estaLoggeadoUsuario']) && $_SESSION['estaLoggeadoUsuario'] == false){
 	die("Ud. no tiene acceso para visitar esta secci&oacute;n.");
 }
 include("Conectar.php");
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <head>
 	<title> CouchInn </title>
-	<link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Reservar_AceptarRechazar.css"/>	
+	<link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Reservar_AceptarRechazar.css"/>
 </head>
 <body>
 	<?php
@@ -23,7 +23,7 @@ include("Conectar.php");
 
 			<form method="post" name="borrar">
 
-				<?php echo '<input type=hidden name="reserva" value="'.$_POST['reserva'].'"/>'; // ESTO SIRVE PARA QUE CUANDO APRETAS EL BOTON NO PIERDA EL POST ?> 
+				<?php echo '<input type=hidden name="reserva" value="'.$_POST['reserva'].'"/>'; // ESTO SIRVE PARA QUE CUANDO APRETAS EL BOTON NO PIERDA EL POST ?>
 				<?php
 					$query = "SELECT * FROM reserva WHERE reserva.idReserva=".$_POST['reserva']."";
 					$q = mysql_query($query, $link);
@@ -52,9 +52,9 @@ include("Conectar.php");
 						$boo= false;
 						$cadRech= "update reserva set reserva.Aceptada='$boo' where reserva.idReserva='$idReserva'";
 						mysql_query($cadRech);
-						//PARA EL MAIL 
-						$query = "SELECT * 
-								  FROM couch 
+						//PARA EL MAIL
+						$query = "SELECT *
+								  FROM couch
 								  INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
 								  WHERE couch.idCouch=".$resCouch['idCouch']."";
 						$q = mysql_query($query, $link);
@@ -75,7 +75,7 @@ include("Conectar.php");
 					}
 
 					if (isset($_POST['aceptar'])) {
-						
+
 						$query = "SELECT * FROM reserva WHERE reserva.idCouch=".$resCouch['idCouch']."";
 						$que = mysql_query($query, $link);
 						$numVALIDAR=mysql_num_rows ($que);
@@ -96,11 +96,11 @@ include("Conectar.php");
 						}
 						//SI NO HAY RESERVAS YA HACEPTADAS ENTRO Y ACEPTO LA RESERVA
 						if ($ControlAceptada == false) {
-							
+
 							$query = "SELECT * FROM reserva WHERE reserva.idCouch=".$resCouch['idCouch']."";
 							$que = mysql_query($query, $link);
 							$numVALIDAR=mysql_num_rows ($que);
-							
+
 							for ($x=0; $x<$numVALIDAR; $x++) {
 
 								$resVALIDAR=mysql_fetch_array($que);
@@ -116,12 +116,13 @@ include("Conectar.php");
 							}
 							$idReserva= $_POST['reserva'];
 							$boo= true;
-							$cadAcep= "update reserva set reserva.Aceptada='$boo' where reserva.idReserva='$idReserva'";
+							$hoy = date('Y-m-d');
+							$cadAcep= "update reserva set reserva.Aceptada='$boo', reserva.FechaAceptada='$hoy' where reserva.idReserva='$idReserva'";
 							mysql_query($cadAcep);  //PONE EN TRUE LA RESERVA, PASA A ESTAR ACEPTADA
-							
-							//PARA EL MAIL 
-							$query = "SELECT * 
-									  FROM couch 
+
+							//PARA EL MAIL
+							$query = "SELECT *
+									  FROM couch
 									  INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
 									  WHERE couch.idCouch=".$resCouch['idCouch']."";
 							$q = mysql_query($query, $link);
@@ -153,9 +154,9 @@ include("Conectar.php");
 							$boo= false;
 							$cadRech= "update reserva set reserva.Aceptada='$boo' where reserva.idReserva='$idReserva'";
 							mysql_query($cadRech);
-							//PARA EL MAIL 
-							$query = "SELECT * 
-									  FROM couch 
+							//PARA EL MAIL
+							$query = "SELECT *
+									  FROM couch
 									  INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
 									  WHERE couch.idCouch=".$resCouch['idCouch']."";
 							$q = mysql_query($query, $link);

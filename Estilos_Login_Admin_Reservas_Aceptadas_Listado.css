@@ -28,7 +28,7 @@ body {
 
 /*----------------------------------*/
 
-.contenido-ganancias{
+.contenido-reservas{
   width: 75%;
   height: 100%;
   margin-top: 0.7em;
@@ -62,7 +62,7 @@ th{
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  width: 20%;
+  width: 16.5%;
   font-family: "Roboto";
   padding-top: 0.4em;
   padding-bottom: 0.4em;
@@ -70,7 +70,7 @@ th{
 }
 .col-fechaDesde{
   text-align: center;
-  width: 20%;
+  width: 16.5%;
   font-size: 16px;
   font-family: "Roboto";
   font-weight: normal;
@@ -81,7 +81,7 @@ th{
 
 .col-fechaHasta{
   text-align: center;
-  width: 20%;
+  width: 16.5%;
   font-size: 16px;
   font-family: "Roboto";
   font-weight: normal;
@@ -89,9 +89,9 @@ th{
   padding-bottom: 0.4em;
   color: #6d6d6d;
 }
-.col-fechaAlta{
+.col-fechaAceptada{
   text-align: center;
-  width: 20%;
+  width: 16.5%;
   font-size: 16px;
   font-family: "Roboto";
   font-weight: normal;
@@ -100,9 +100,9 @@ th{
   color: #6d6d6d;
   overflow: hidden;
 }
-.col-usuario{
+.col-hospedaje{
   text-align: center;
-  width: 20%;
+  width: 16.5%;
   font-size: 16px;
   font-family: "Roboto";
   font-weight: normal;
@@ -110,9 +110,9 @@ th{
   padding-bottom: 0.4em;
   color: #6d6d6d;
 }
-.col-gananciaObtenida{
+.col-duenioHospedaje{
   text-align: center;
-  width: 20%;
+  width: 16.5%;
   font-size: 16px;
   font-family: "Roboto";
   font-weight: normal;
@@ -121,6 +121,21 @@ th{
   color: #6d6d6d;
 
 }
+form{
+        text-align: center;
+}
+.col-usuarioReserva{
+  text-align: center;
+  width: 16.5%;
+  font-size: 16px;
+  font-family: "Roboto";
+  font-weight: normal;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  color: #6d6d6d;
+
+}
+
 
 /*----------------------------------*/
 .tablaGanancia{
@@ -130,7 +145,7 @@ th{
 
 /*----------------------------------*/
 #formulario {
-width: 50%;
+width: 40em;
 height: 2em;
 margin-top:3em;
 margin-right: 25%;
@@ -139,7 +154,6 @@ font-family: "Roboto";
 color: #6d6d6d;
 font-size: 16px;
 overflow: hidden;
-text-align: center;
 }
 /*----------------------------------*/
 
