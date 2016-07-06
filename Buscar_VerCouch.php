@@ -1,10 +1,10 @@
-<?php 
+<?php
 include("Conectar.php");
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <head>
 	<title> CouchInn </title>
-	<link rel ="stylesheet" type ="text/css" href ="Estilos_Buscar_VerCouch.css"/>	
+	<link rel ="stylesheet" type ="text/css" href ="Estilos_Buscar_VerCouch.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -17,47 +17,65 @@ include("Conectar.php");
 				<p> B&uacutesqueda </p>
 			</div>
 			<?php
-			if (($_POST['titulo'] <> "")||($_POST['tipo'] <> "")||($_POST['capacidad'] <> "")||($_POST['loc'] <> "")||($_POST['puntaje'] <> "")||($_POST['descripcion'] <> "")) {
+			/*if(isset($_POST['fechaDesde']) && isset($_POST['fechaHasta']))	{
+				//echo "<script> alert('".$_POST['fechaDesde']."')</script>";
+				echo '<div id= "formulario">';
+					echo 'Fecha Desde: '.$_POST['fechaDesde'];
+				echo '</div>';
+				echo '<div id= "formulario">';
+					echo 'Fecha Hasta: '.$_POST['fechaHasta'];
+				echo '</div>';
+			}*/
 
-				if ($_POST['titulo'] <> "") {	
-					echo '<div id= "formulario">';	
+			if ((($_POST['fechaDesde']) && $_POST['fechaHasta']) ||($_POST['titulo'] <> "")||($_POST['tipo'] <> "")||($_POST['capacidad'] <> "")||($_POST['loc'] <> "")||($_POST['puntaje'] <> "")||($_POST['descripcion'] <> "")) {
+				if(($_POST['fechaDesde']<>"") && ($_POST['fechaHasta']<>""))	{
+					//echo "<script> alert('".$_POST['fechaDesde']."')</script>";
+					echo '<div id= "formulario">';
+						echo 'Fecha Desde: '.$_POST['fechaDesde'];
+					echo '</div>';
+					echo '<div id= "formulario">';
+						echo 'Fecha Hasta: '.$_POST['fechaHasta'];
+					echo '</div>';
+				}
+				if ($_POST['titulo'] <> "") {
+					echo '<div id= "formulario">';
 						echo 'Titulo: '.$_POST['titulo'];
 					echo '</div>';
 				}
-				if ($_POST['tipo'] <> "") {	
+				if ($_POST['tipo'] <> "") {
 					$query = "SELECT * FROM tipo WHERE idTipo='".$_POST['tipo']."'";
 					$qe = mysql_query($query, $link);
 					$resTipo=mysql_fetch_array($qe);
-					echo '<div id= "formulario">';	
+					echo '<div id= "formulario">';
 						echo 'Tipo: '.$resTipo['Tipo'];
 					echo '</div>';
 				}
-				if ($_POST['capacidad'] <> "") {	
-					echo '<div id= "formulario">';	
+				if ($_POST['capacidad'] <> "") {
+					echo '<div id= "formulario">';
 						echo 'Capacidad: '.$_POST['capacidad'];
 					echo '</div>';
 				}
-				if ($_POST['loc'] <> "") {	
+				if ($_POST['loc'] <> "") {
 					$query = "SELECT * FROM localidades WHERE idLocalidades='".$_POST['loc']."'";
 					$qe = mysql_query($query, $link);
 					$resLoc=mysql_fetch_array($qe);
-					echo '<div id= "formulario">';	
+					echo '<div id= "formulario">';
 						echo 'Localidades: '.$resLoc['Localidad'];
 					echo '</div>';
 				}
-				if ($_POST['puntaje'] <> "") {	
-					echo '<div id= "formulario">';	
+				if ($_POST['puntaje'] <> "") {
+					echo '<div id= "formulario">';
 						echo 'Puntaje: '.$_POST['puntaje'];
 					echo '</div>';
 				}
-				if ($_POST['descripcion'] <> "") {	
-					echo '<div id= "formulario">';	
+				if ($_POST['descripcion'] <> "") {
+					echo '<div id= "formulario">';
 						echo 'Descripcion: '.$_POST['descripcion'];
 					echo '</div>';
 				}
 			}
 			else {
-				echo '<div id= "formulario1">';	
+				echo '<div id= "formulario1">';
 						echo 'No ha filtrado por ninguna característica';
 					echo '</div>';
 			}
@@ -100,16 +118,17 @@ include("Conectar.php");
 				<?php
 				$sql = "SELECT *
 						FROM couch
-						INNER JOIN tipo ON couch.idTipo=tipo.idTipo 
+						INNER JOIN tipo ON couch.idTipo=tipo.idTipo
 						INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades";
+
 				$where = "WHERE ";
 
 				if ($_POST['titulo'] <> "")
-				{		
+				{
 					//SELECT * FROM couch WHERE Titulo LIKE "%casa%"
-					/* SELECT * FROM couch 
-					INNER JOIN tipo ON couch.idTipo=tipo.idTipo 
-					INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades 
+					/* SELECT * FROM couch
+					INNER JOIN tipo ON couch.idTipo=tipo.idTipo
+					INNER JOIN localidades ON couch.idLocalidades=localidades.idLocalidades
 					WHERE Titulo LIKE "%casa%" and Descripcion LIKE "%casa%" */
 					if (strlen($where)==6) {
 						$where.=" Titulo LIKE '%".$_POST['titulo']."%'";
@@ -128,7 +147,7 @@ include("Conectar.php");
 				    }
 				}
 				if ($_POST['tipo'] <> "")
-				{		
+				{
 					if (strlen($where)==6) {
 						$where.=" tipo.idTipo=".$_POST['tipo'];
 					}
@@ -137,7 +156,7 @@ include("Conectar.php");
 				    }
 				}
 				if ($_POST['loc'] <> "")
-				{		
+				{
 					if (strlen($where)==6) {
 						$where.=" localidades.idLocalidades=".$_POST['loc'];
 					}
@@ -146,7 +165,7 @@ include("Conectar.php");
 				    }
 				}
 				if ($_POST['capacidad'] <> "")
-				{		
+				{
 					if (strlen($where)==6) {
 						$where.=" couch.Capacidad>=".$_POST['capacidad'];
 					}
@@ -155,7 +174,7 @@ include("Conectar.php");
 				    }
 				}
 				if ($_POST['puntaje'] <> "")
-				{		
+				{
 					if (strlen($where)==6) {
 						$where.=" couch.Puntaje>=".$_POST['puntaje'];
 					}
@@ -163,12 +182,30 @@ include("Conectar.php");
 						$where.=" and couch.Puntaje>=".$_POST['puntaje'];
 				    }
 				}
+				/*aca voy yo*/
+				if($_POST['fechaDesde']<>''){//con cualqiera de los 2 anda en teoria
+					if(strlen($where)==6){
+						$where.=" idCouch NOT IN (SELECT couch.idCouch
+						 								 FROM couch
+														 INNER JOIN reserva ON couch.idCouch=reserva.idCouch
+														 WHERE  (reserva.FechaInicio<='".$_POST['fechaDesde']."' AND '".$_POST['fechaDesde']."'<=reserva.FechaFin) OR (reserva.FechaFin>='".$_POST['fechaHasta']."' AND reserva.FechaInicio<='".$_POST['fechaHasta']."') and reserva.Aceptada='1')";
 
+
+					}
+					else{
+						$where.=" and couch.idCouch NOT IN ('SELECT couch.idCouch
+						 								 FROM couch
+														 INNER JOIN reserva ON couch.idCouch=reserva.idCouch
+														 WHERE  (reserva.FechaInicio<='".$_POST['fechaDesde']."' AND '".$_POST['fechaDesde']."'<=reserva.FechaFin) OR (reserva.FechaFin>='".$_POST['fechaHasta']."' AND reserva.FechaInicio<='".$_POST['fechaHasta']."') and reserva.Aceptada='1')";
+					}
+
+				}
+				echo $sql;
 				if (strlen($where) > 6)
 				{
 					$sql.=" ".$where;
 				}
-
+				echo $sql;
 				if (isset($_POST['orden']) and $_POST['metodo'])
 				{
 					if ($_POST['orden']!='no')
@@ -181,10 +218,10 @@ include("Conectar.php");
 				}
 
 				//echo $sql;  //PARA VER SI FUNCIONA LA CONSULTA SQL
-				
+
 				$resultado=mysql_query($sql);
 				$num_resultados=mysql_num_rows($resultado);
-						
+
 					if ($num_resultados<>0) {
 						for ($i=0; $i<$num_resultados; $i++) {
 
@@ -201,13 +238,13 @@ include("Conectar.php");
 									echo '<a href="Ver_Couchs_Detalles.php?couch='.$resCouch['idCouch'].'&img='.$resImg['idImagenes'].'">';
 
 									echo '<div id= "imag">';
-										
+
 										$query = "SELECT * FROM ucomun WHERE idUComun='".$resCouch['idUComun']."'";   //CONSULTA A LA TABLA USUARIO CHOCANDO IDUCOMUN
 										$qe = mysql_query($query, $link);
 										$resUser=mysql_fetch_array($qe);
 										if ($resUser['Premium'] and $resImg['Imagen']) {   //SI PREMIUM ES TRUE Y SI SUBIO UNA IMAGEN
 											$dir = $resImg['Imagen'];
-											//echo $dir; PARA VER SI ANDA 
+											//echo $dir; PARA VER SI ANDA
 											echo'<img class="redondo" src="'.$dir.'" width="74" height="74"/>';
 										}
 										else {
@@ -260,7 +297,7 @@ include("Conectar.php");
 							echo 'No disponemos de hospedajes con los requisitos ingresados';
 						echo '</div>';
 					}
-				?>	
+				?>
 			</div>
 			<div id="boton">
 				<div id="botonvolver">
@@ -272,5 +309,30 @@ include("Conectar.php");
 	<?php
 		include("Pie.php");
 	?>
+	<script type="text/javascript">
+	function validarFechas(){
+		var tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
+		alert(tomorrow);
+		var fechaDesde = document.getElementById('fd').value;//fecha del 1er input
+		var fechaHasta = document.getElementById('fh').value;//fecha del 2do nput
+		if((fechaDesde == "")||(fechaHasta == "")){//si alguna o 2 de las fechas no fueron seteadas->alert
+			alert("Se deben ingresar ambas fechas");
+			return false;
+		}
+		if(fechaDesde >= tomorrow && fechaHasta >= tomorrow ){
+			if(fechaDesde>fechaHasta){
+				alert("La fecha 'desde' no puede ser posterior a la fecha 'hasta'");
+				return false;
+			}
+			//paso la validacion entondes retorno true;
+			alert("Desde: "+fechaDesde+"  "+"Hasta: "+fechaHasta);
+			return true;
+		}
+		else{
+			alert('El año debe ser igual o mayor que 2016');
+		}
+	}
+	</script>
 </body>
 </html>
