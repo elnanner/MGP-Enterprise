@@ -27,11 +27,25 @@ include("Conectar.php");
         <div id= "titulo">
           <p> Resultados Reporte de Reservas Aceptadas </p>
       	</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Ud. filtró por</th>
+							<th style='width:25%'>Fecha Desde <td><?php echo $_POST['fechaDesde'];?></td></th>
+							<th style='width:25%'>Fecha Hasta <td><?php echo $_POST['fechaHasta'];?></td></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="separador">
+        <!--solamente es para separar las tablas-->
+        </div>
+
         <table>
-          <thead>
+          <tbody>
+
             <tr>
-              <th>Fecha Desde</th>
-              <th>Fecha Hasta</th>
+              <th>Fecha Inicio</th>
+              <th>Fecha Fin</th>
               <th>Fecha Aceptada</th>
               <th>Hospedaje</th>
               <th>Dueño de Hospedaje</th>
@@ -39,12 +53,9 @@ include("Conectar.php");
 
             </tr>
 
-          </thead>
+          </tbody>
         </table>
 
-        <div class="separador">
-        <!--solamente es para separar las tablas-->
-        </div>
 
         <table>
           <tbody>
@@ -52,13 +63,13 @@ include("Conectar.php");
               if(isset($_POST['mostrarReservas'])){
                 $fechaDesde = $_POST['fechaDesde'];
                 $fechaHasta = $_POST['fechaHasta'];
-                $consulta = $consulta = "SELECT * FROM reserva WHERE (FechaInicio >='".$fechaDesde."') AND (FechaFin <= '".$fechaHasta."') AND (Aceptada = 1) ";
+                $consulta = $consulta = "SELECT * FROM reserva WHERE (FechaAceptada >='".$fechaDesde."') AND (FechaAceptada <= '".$fechaHasta."') AND (Aceptada = 1) ";
                 $tuplas = mysql_query($consulta,$link);
                 $numTuplas=mysql_num_rows($tuplas);
-                //echo "fecha ".$fechaDesde;
-                //echo "numero de tuplas ".$numTuplas;
                 if($numTuplas <> 0){//hay tuplas
                   while($dato =mysql_fetch_array($tuplas)){
+										$fechaDesde = $dato['FechaInicio'];
+										$fechaHasta = $dato['FechaFin'];
                     mostrar($fechaDesde,$fechaHasta,$dato);//muestro los datos
                   }
                 }
@@ -83,6 +94,7 @@ include("Conectar.php");
 
 
 <?php
+
 function mostrar($fechaDesde,$fechaHasta,$dato){
   //$dato contiene la tupla con la reserva, obtener los datos consultando las demas tablas :(
   $queryHospedaje = mysql_query("SELECT Titulo as titulo FROM couch WHERE (idCouch = '".$dato['idCouch']."')  ");

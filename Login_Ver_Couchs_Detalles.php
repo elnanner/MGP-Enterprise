@@ -1,17 +1,51 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['estaLoggeadoUsuario']) || isset($_SESSION['estaLoggeadoUsuario']) && $_SESSION['estaLoggeadoUsuario'] == false){
 	die("Ud. no tiene acceso para visitar esta secci&oacute;n.");
-} 
+}
 include("Conectar.php");
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <head>
+	<script type="text/javascript">
+
+		function refrescar(elemento){//aca recibe el div que tiene el textarea y el input
+			var textarea = elemento.childNodes[0];
+			var boton =(elemento.childNodes[2]);
+			var id = textarea.getAttribute('ID');
+			alert(textarea.value);
+			alert(boton.value);
+			alert(id);
+
+			var nodo = document.createElement('div');
+			var contenido = document.createTextNode('Tu respuesta:'+textarea.value);
+			nodo.appendChild(contenido);
+			elemento.appendChild(nodo);
+			var conexion;
+			alert('ndo');
+			conexion = new XMLHttpRequest();
+			conexion.onreadystatechange=function(){
+				if(conexion.readyState==4 && conexion.status==200){
+					//alert(conexion.status);
+					document.getElementById('div-respuesta').textContent='textarea.value';
+				}
+
+			}
+			alert('0000000000000');
+			conexion.open("GET","updateDato.php?dato="+textarea.value+"&idComment="+id, true);
+			alert(id);
+			conexion.send();
+			elemento.removeChild(elemento.childNodes[0]);
+			elemento.removeChild(elemento.childNodes[1]);
+			elemento.removeChild(elemento.childNodes[2]);
+		}
+	</script>
 	<title> CouchInn </title>
-	<link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Ver_Couchs_Detalles.css"/>	
+	<link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Ver_Couchs_Detalles.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 	<!-- Add jQuery library -->
 	<script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
@@ -216,7 +250,7 @@ include("Conectar.php");
 	<?php
 		include("Login_Cabeza.php");
 	?>
-	<div id= "cuerpo"> 
+	<div id= "cuerpo">
 		<?php
 			include("Login_Menu.php");
 		?>
@@ -242,14 +276,14 @@ include("Conectar.php");
 							$num=mysql_num_rows ($qe);
 							for ($i=0; $i<$num; $i++) {
 								$resImg=mysql_fetch_array($qe);
-								if ($resImg['Imagen']<>"") {	
+								if ($resImg['Imagen']<>"") {
 									//echo '<a class="fancybox-thumbs" data-fancybox-group="thumb" href="'.$resImg['Imagen'].'"><img src="'.$resImg['Imagen'].'" width="74" height="74" /></a>';
 									echo '<a class="fancybox" href="'.$resImg['Imagen'].'" data-fancybox-group="gallery"><img src="'.$resImg['Imagen'].'" width="74" height="74"/></a>';
 								}
 								else {
 									echo '<a class="fancybox" href="Imagen/sillon.png" data-fancybox-group="gallery"><img src="Imagen/sillon.png" width="74" height="74"/></a>';
 								}
-							}						
+							}
 						echo '</div>';
 
 						echo '<div id= "titu">';
@@ -276,7 +310,7 @@ include("Conectar.php");
 						echo '</div>';
 
 						echo '<div id= "tipo">';
-							$query = "SELECT * FROM tipo WHERE idTipo='".$resCouch['idTipo']."'"; 
+							$query = "SELECT * FROM tipo WHERE idTipo='".$resCouch['idTipo']."'";
 							$q = mysql_query($query, $link);
 							$result=mysql_fetch_array($q);
 							echo '<p> <b>Tipo</b>: '.$result['Tipo'].' </p>';
@@ -306,20 +340,20 @@ include("Conectar.php");
 								echo '</div>';
 							echo '</form>';
 						echo '</div>';
-	
+
 					echo '</div>';
 
 					echo '<div id= "comentario">';   //HACER UN COMENTARIO A LA PUBLICAcION
 						echo '<form method="post" name="registro">';
 							echo '<div id= "formulario">';
-								echo '<textarea rows="3" cols="60" name="comentario" REQUIRED MAXLENGTH="140" PLACEHOLDER="Ingrese un comentario"></textarea>';	
+								echo '<textarea rows="3" cols="60" name="comentario" REQUIRED MAXLENGTH="140" PLACEHOLDER="Ingrese un comentario"></textarea>';
 							echo '</div>';
 							echo '<div id= "formularioBoton">';
 								echo '<input type="submit" name="publicar" value="Publicar"/>';
 							echo '</div>';
-						echo '</form>';
+						echo '</form>';/*
 						if (isset($_POST['publicar'])) {
-							$query= "INSERT INTO comentarios (idCouch, idUComun, Comentario) 
+							$query= "INSERT INTO comentarios (idCouch, idUComun, Comentario)
 							VALUES ('".$resCouch['idCouch']."','".$_SESSION['idUComun']."','".$_POST['comentario']."')";
 							mysql_query ($query);
 
@@ -329,7 +363,27 @@ include("Conectar.php");
 									location.href= $dir;
 								</script>
 							<?php
+						}*/
+						/**************************************aca ingresa una pregunta enla parte que se muestran los comentearios, o sea que tiene coments /*******************/
+						if (isset($_POST['publicar'])) {
+							if($_SESSION['idUComun']<>$resCouch['idUComun']){//si no soy dueño del couch que quiero preguntar
+								$query= "INSERT INTO comments (idCouch, idUsuario, pregunta, idDuenio)
+								VALUES ('".$resCouch['idCouch']."','".$_SESSION['idUComun']."','".$_POST['comentario']."','".$resCouch['idUComun']."')";
+								mysql_query ($query);
+								$dir="Login_Ver_Couchs_Detalles.php?couch='".$resCouch['idCouch']."'";
+								?>
+									<script type="text/javascript">
+										location.href= $dir;
+									</script>
+								<?php
+							}else{
+								?> <script type="text/javascript">
+									alert("Ud. no puede preguntar sobre un couch propio");
+								</script>
+								<?php
+							}
 						}
+						/**********************************************************************/
 					echo '</div>';
 
 					echo '<div class="scrollbar" id= "listamenor">';
@@ -339,17 +393,17 @@ include("Conectar.php");
 							$que = mysql_query($query, $link);
 							$resCouch=mysql_fetch_array($que);
 
-							$query = "SELECT * FROM comentarios WHERE idCouch=".$couch." ORDER BY idComentarios DESC";
+							$query = "SELECT * FROM comments WHERE idCouch=".$couch." ORDER BY idComment DESC";
 							$que = mysql_query($query, $link);
 							$numCom=mysql_num_rows ($que);
-									
-							for ($i=0; $i<$numCom; $i++) {
+
+							/*for ($i=0; $i<$numCom; $i++) {
 
 								echo '<div id= "fila">';
 
 								$resCom=mysql_fetch_array($que);
 
-									echo '<div id= "filaNom">';     
+									echo '<div id= "filaNom">';
 										$query = "SELECT * FROM ucomun WHERE idUComun=".$resCom['idUComun']."";
 										$quer = mysql_query($query, $link);
 										$resNom=mysql_fetch_array($quer);
@@ -360,20 +414,83 @@ include("Conectar.php");
 										else {
 											echo '<b> '.$resNom['Nombre'].': (Pregunta) </b>';
 										}
-									echo '</div>';			
+									echo '</div>';
 
 									echo '<div id= "filaCom">';
 										echo '<p> '.$resCom['Comentario'].' </p>';
 									echo '</div>';
 
-								echo '</div>';	
-							}
+								echo '</div>';
+							}*/
 
-						echo '</div>';	
-					echo '</div>';	
-				echo '</div>';	
+
+							/*************esta parte es para mostrar los comentarios de cada couch******************/
+							while($comment=mysql_fetch_array($que)){//mientras tenga comments los muestro
+								$quienPregunta = mysql_fetch_array(mysql_query("SELECT Nombre FROM ucomun WHERE ucomun.idUComun='".$comment['idUsuario']."'"));
+								?>
+									<div class="comment-container">
+
+											<div id='filaComentario'>
+												<div class="comment-pregunta">
+													<div><?php echo "<b>pregunta de  ".$quienPregunta['Nombre'].":</b> ".$comment['pregunta'] ?></div>
+												</div>
+												<div class="comment-respuesta" >
+													<div>
+														<?php
+															if($comment['respuesta']!=''){//si tiene respuesta la imprimo
+																echo "<b>respuesta:</b>";
+																echo $comment['respuesta'];
+															}
+															else{//sino le muestro el textarea para que responda y lo manejo en este mismo archivo
+															//	$_POST['idComment']=$comment['idComment'];
+																echo "<div>";
+																echo "<textarea  id='".$comment['idComment']."' class='visible' name='textoRespuesta' rows='4' cols='65'></textarea>"	;
+																echo 	"<br>";
+																echo	"<input id='boton1' class='visible' type='button' onclick='refrescar(this.parentNode)' name='responder' value='Responder'>";
+																echo 	"</div>";
+
+															}
+														?>
+
+														</div>
+												</div>
+											</div>
+
+									</div>
+<!--********************* ESTILOS CSS **********************-->
+								<style media="screen">
+									.comment-container{
+										width: 100%;
+										margin-left: 10%;
+									}
+									#filaComentario{
+										width:90%;
+										background:;
+										border-bottom: 1px dotted black;
+										border-top: 1px dotted black;
+									}
+									.comment-pregunta{
+										padding: 10px;
+									}
+									.comment-respuesta{
+										padding: 10px;
+									}
+									.visible{
+										visibility: visible;
+									}
+									.invisible{
+										visibility: hidden;
+										display: none;
+									}
+
+								</style>
+								<?php
+							}
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
 			}
-			else {
+			else {//no tiene comentarios
 				echo '<div id= "listaSinComentarios">';
 
 					echo '<div id= "subLis">';
@@ -389,14 +506,14 @@ include("Conectar.php");
 							$num=mysql_num_rows ($qe);
 							for ($i=0; $i<$num; $i++) {
 								$resImg=mysql_fetch_array($qe);
-								if ($resImg['Imagen']<>"") {	
+								if ($resImg['Imagen']<>"") {
 									//echo '<a class="fancybox-thumbs" data-fancybox-group="thumb" href="'.$resImg['Imagen'].'"><img src="'.$resImg['Imagen'].'" width="74" height="74" /></a>';
 									echo '<a class="fancybox" href="'.$resImg['Imagen'].'" data-fancybox-group="gallery"><img src="'.$resImg['Imagen'].'" width="74" height="74"/></a>';
 								}
 								else {
 									echo '<a class="fancybox" href="Imagen/sillon.png" data-fancybox-group="gallery"><img src="Imagen/sillon.png" width="74" height="74"/></a>';
 								}
-							}						
+							}
 						echo '</div>';
 
 						echo '<div id= "titu">';
@@ -423,7 +540,7 @@ include("Conectar.php");
 						echo '</div>';
 
 						echo '<div id= "tipo">';
-							$query = "SELECT * FROM tipo WHERE idTipo='".$resCouch['idTipo']."'"; 
+							$query = "SELECT * FROM tipo WHERE idTipo='".$resCouch['idTipo']."'";
 							$q = mysql_query($query, $link);
 							$result=mysql_fetch_array($q);
 							echo '<p> <b>Tipo</b>: '.$result['Tipo'].' </p>';
@@ -453,20 +570,20 @@ include("Conectar.php");
 								echo '</div>';
 							echo '</form>';
 						echo '</div>';
-	
+
 					echo '</div>';
 
 					echo '<div id= "comentario">';
 						echo '<form method="post" name="registro">';
 							echo '<div id= "formulario">';
-								echo '<textarea rows="3" cols="60" name="comentario" REQUIRED MAXLENGTH="140" PLACEHOLDER="Ingrese un comentario"></textarea>';	
+								echo '<textarea rows="3" cols="60" name="comentario" REQUIRED MAXLENGTH="140" PLACEHOLDER="Ingrese un comentario"></textarea>';
 							echo '</div>';
 							echo '<div id= "formularioBoton">';
 								echo '<input type="submit" name="publicar" value="Publicar"/>';
 							echo '</div>';
 						echo '</form>';
-						if (isset($_POST['publicar'])) {
-							$query= "INSERT INTO comentarios (idCouch, idUComun, Comentario) 
+					/*	if (isset($_POST['publicar'])) {aca voy a cambiar laforma de hacer comentarios
+							$query= "INSERT INTO comentarios (idCouch, idUComun, Comentario)
 							VALUES ('".$resCouch['idCouch']."','".$_SESSION['idUComun']."','".$_POST['comentario']."')";
 							mysql_query ($query);
 
@@ -476,10 +593,30 @@ include("Conectar.php");
 									location.href= $dir;
 								</script>
 							<?php
+						}*/
+						/*************** esto es para ingresar una pregunta en un couch/**************/
+						if (isset($_POST['publicar'])) {
+							if($_SESSION['idUComun']<>$resCouch['idUComun']){//si no soy dueño del couch que quiero preguntar
+								$query= "INSERT INTO comments (idCouch, idUsuario, pregunta, idDuenio)
+								VALUES ('".$resCouch['idCouch']."','".$_SESSION['idUComun']."','".$_POST['comentario']."','".$resCouch['idUComun']."')";
+								mysql_query ($query);
+								$dir="Login_Ver_Couchs_Detalles.php?couch='".$resCouch['idCouch']."'";
+								?>
+									<script type="text/javascript">
+										location.href= $dir;
+									</script>
+								<?php
+							}else{
+								?> <script type="text/javascript">
+									alert("Ud. no puede preguntar sobre un couch propio");
+								</script>
+								<?php
+							}
 						}
+						/****************************************************/
 					echo '</div>';
-						
-				echo '</div>';	
+
+				echo '</div>';
 			}
 		?>
 	</div>

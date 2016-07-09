@@ -27,11 +27,21 @@ include("Conectar.php");
         <div id= "titulo">
           <p> Resultados Reporte de Ganancias </p>
       	</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Ud. filtró por</th>
+							<th style='width:25%'>Fecha Desde <td><?php echo $_POST['fechaDesde'];?></td></th>
+							<th style='width:25%'>Fecha Hasta <td><?php echo $_POST['fechaHasta'];?></td></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="separador">
+				<!--solamente es para separar las tablas-->
+				</div>
 					<table>
 	          <thead>
 	            <tr>
-	              <th>Fecha Desde</th>
-	              <th>Fecha Hasta</th>
 								<th>Fecha Alta Usuario</th>
 								<th	class='col-usuario' style="font-weight:bold;">Usuario</th>
 	              <th>Ganancia Obtenida</th><!--la tiro a la izq-->
@@ -121,8 +131,6 @@ function mostrarUsuario($fechaDesde,$fechaHasta,$dato,$numTuplas){
 	$usuarioPost = $nombreUsuario['Usuario'];
 	$_POST['datoUsuario']=$usuarioPost;// para pasar el dato la re puta madreeeeeee!!!no me saliaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!!aaaaaaaaaaa!!!
 	echo "<tr>";
-	echo "<td class='col-fechaDesde'>".$fechaDesde."</td>";
-	echo "<td class='col-fechaHasta'>".$fechaHasta."</td>";
 	echo "<td class='col-fechaAlta'>".$dato['fecha']."</td>";
 	usuarioTipoEnlace($usuarioPost);
 	echo "<td class='col-gananciaObtenida' >".$monto."</td>";

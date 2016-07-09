@@ -6,4 +6,6 @@ if (!$link) {
 else {
 	mysql_select_db("couchinn",$link);
 }
+mysql_query("SET NAMES 'UTF8'");
+
 ?>

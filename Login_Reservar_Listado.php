@@ -1,11 +1,11 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['estaLoggeadoUsuario']) || isset($_SESSION['estaLoggeadoUsuario']) && $_SESSION['estaLoggeadoUsuario'] == false){
 	die("Ud. no tiene acceso para visitar esta secci&oacute;n.");
 }
 include("Conectar.php");
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <head>
 	<title> CouchInn </title>
 	<link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Reservar_Listado.css"/>
@@ -59,6 +59,14 @@ include("Conectar.php");
 								echo '<p> '.$resCouch['Descripcion'].' </p>';
 							echo '</div>';
 
+							echo '<div id="datoUsuario">';
+								$query = "SELECT * FROM ucomun WHERE idUComun='".$resCouch['idUComun']."'";
+								$resultado =mysql_query($query);
+								$nombreUsuario = mysql_fetch_array($resultado);
+
+								echo '<b>Nombre:&nbsp</b><p>'.$nombreUsuario['Nombre'].'&nbsp</p><b>&nbspPuntaje:&nbsp</b><p>'.$nombreUsuario['Puntaje'].'&nbsp</p>';
+							echo '</div>';
+
 							echo '<div id="res">';
 								echo '<b>Fecha Ingreso:&nbsp</b><p>'.$resCouch['FechaInicio'].'&nbsp</p><b>&nbspFecha Egreso:&nbsp</b><p>'.$resCouch['FechaFin'].'&nbsp</p><b>&nbspCapacidad:&nbsp</b><p>'.$resCouch['CapacidadPersonas'].'</p>';
 							echo '</div>';
@@ -96,7 +104,7 @@ include("Conectar.php");
 							echo '<p> No tiene ninguna reserva solicitada hasta el momento </p>';
 						echo '</div>';
 					}
-				?>	
+				?>
 			</div>
 		</div>
 	</div>

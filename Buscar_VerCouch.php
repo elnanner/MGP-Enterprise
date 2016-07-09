@@ -27,7 +27,8 @@ include("Conectar.php");
 				echo '</div>';
 			}*/
 
-			if ((($_POST['fechaDesde']) && $_POST['fechaHasta']) ||($_POST['titulo'] <> "")||($_POST['tipo'] <> "")||($_POST['capacidad'] <> "")||($_POST['loc'] <> "")||($_POST['puntaje'] <> "")||($_POST['descripcion'] <> "")) {
+			if ((($_POST['fechaDesde']<>"") && $_POST['fechaHasta']<>"") ||($_POST['titulo'] <> "")||($_POST['tipo'] <> "")||($_POST['capacidad'] <> "")||($_POST['loc'] <> "")||($_POST['puntaje'] <> "")||($_POST['descripcion'] <> "")) {
+
 				if(($_POST['fechaDesde']<>"") && ($_POST['fechaHasta']<>""))	{
 					//echo "<script> alert('".$_POST['fechaDesde']."')</script>";
 					echo '<div id= "formulario">';
@@ -185,27 +186,28 @@ include("Conectar.php");
 				/*aca voy yo*/
 				if($_POST['fechaDesde']<>''){//con cualqiera de los 2 anda en teoria
 					if(strlen($where)==6){
-						$where.=" idCouch NOT IN (SELECT couch.idCouch
-						 								 FROM couch
-														 INNER JOIN reserva ON couch.idCouch=reserva.idCouch
-														 WHERE  (reserva.FechaInicio<='".$_POST['fechaDesde']."' AND '".$_POST['fechaDesde']."'<=reserva.FechaFin) OR (reserva.FechaFin>='".$_POST['fechaHasta']."' AND reserva.FechaInicio<='".$_POST['fechaHasta']."') and reserva.Aceptada='1')";
+						$where.=" idCouch NOT IN (SELECT reserva.idCouch
+						 								 FROM reserva
+														 WHERE  ('".$_POST['fechaDesde']."' BETWEEN reserva.Fechainicio AND reserva.FechaFin AND Aceptada='1') OR
+																	 ('".$_POST['fechaHasta']."' BETWEEN reserva.Fechainicio AND reserva.FechaFin and Aceptada='1'))";
 
 
 					}
 					else{
-						$where.=" and couch.idCouch NOT IN ('SELECT couch.idCouch
-						 								 FROM couch
-														 INNER JOIN reserva ON couch.idCouch=reserva.idCouch
-														 WHERE  (reserva.FechaInicio<='".$_POST['fechaDesde']."' AND '".$_POST['fechaDesde']."'<=reserva.FechaFin) OR (reserva.FechaFin>='".$_POST['fechaHasta']."' AND reserva.FechaInicio<='".$_POST['fechaHasta']."') and reserva.Aceptada='1')";
+						$where.=" and idCouch NOT IN (SELECT reserva.idCouch
+						 								 FROM reserva
+														 WHERE  ('".$_POST['fechaDesde']."' BETWEEN reserva.Fechainicio AND reserva.FechaFin AND Aceptada='1') OR
+														 				('".$_POST['fechaHasta']."' BETWEEN reserva.Fechainicio AND reserva.FechaFin and Aceptada='1'))";
+
 					}
 
 				}
-				echo $sql;
+				//echo $sql;
 				if (strlen($where) > 6)
 				{
 					$sql.=" ".$where;
 				}
-				echo $sql;
+			echo $sql;
 				if (isset($_POST['orden']) and $_POST['metodo'])
 				{
 					if ($_POST['orden']!='no')
