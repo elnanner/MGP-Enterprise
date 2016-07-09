@@ -24,9 +24,9 @@ body {
 }
 
 #boton {
-    width:25em;
+  width:25em;
   margin-left:0.5em;
-  margin-top:4.5em;
+  margin-top:5.3em;
 
 }
 
@@ -69,10 +69,12 @@ margin-left:2em;
 #formulario {
 width: 20em;
 height: 1.5em;
-padding-top:-2em;
+/*padding-top:-2em;
 margin-top: 2em;
 margin-bottom:2.7em;
-margin-left: 2em;
+margin-left: 2em;*/
+margin: 5%;
+padding: 1.8px;
 font-family: "Roboto";
 color: #6d6d6d;
 font-size: 18px;

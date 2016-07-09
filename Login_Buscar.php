@@ -26,6 +26,12 @@ include("Conectar.php");
 			<div id= "SubBus">
 				<form action="Login_Buscar_VerCouch.php" method="post" name="buscar">
 					<div class= "select" id= "formulario">
+						Fecha Desde:<input id="fd" type="date" name="fechaDesde" value="fechaDesde" min="<?php $tomorrow = date("Y-m-d", strtotime("+1 day"));echo $tomorrow?>"/>
+					</div>
+					<div class= "select" id= "formulario">
+						Fecha Hasta:<input id="fh" type="date" name="fechaHasta" value="fechaHasta" min="<?php $tomorrow = date("Y-m-d", strtotime("+1 day"));echo $tomorrow?>"/>
+					</div>
+					<div class= "select" id= "formulario">
 						Titulo:
 						<input type="text" name="titulo" value="" PLACEHOLDER="Ingrese un titulo"/>
 					</div>
@@ -34,9 +40,9 @@ include("Conectar.php");
 						<select name="tipo" style="width:16em">
 							<option value="">Seleccione un tipo</option>
 							<?php
-								$query = "SELECT * FROM tipo WHERE tipo.Eliminado=0"; 
+								$query = "SELECT * FROM tipo WHERE tipo.Eliminado=0";
 								$q = mysql_query($query, $link);
-								while($result=mysql_fetch_array($q)) {	
+								while($result=mysql_fetch_array($q)) {
 									echo"<option value=".$result["idTipo"].">".$result["Tipo"]."</option>";
 								}
 							?>
@@ -56,12 +62,12 @@ include("Conectar.php");
 					</div>
 					<div class= "select" id= "formulario">
 						Localidad:
-						<select name="loc" id="localidades" style="width: 16em"> 
+						<select name="loc" id="localidades" style="width: 16em">
 							<option value="">Seleccione una localidad</option>
 							<?php
-								$query = "SELECT * FROM localidades"; 
+								$query = "SELECT * FROM localidades";
 								$q = mysql_query($query, $link);
-								while($result=mysql_fetch_array($q)) {	
+								while($result=mysql_fetch_array($q)) {
 									echo"<option value=".$result["idLocalidades"].">".$result["Localidad"]."</option>";
 								}
 							?>
@@ -78,12 +84,12 @@ include("Conectar.php");
 							<option value="5"> 5 </option>
 						</select>
 					</div>
-					<div class= "select" id= "formulario1">
+					<div class= "select" id= "formulario">
 						Descripcion:
-						<textarea rows="4" cols="40" name="descripcion" value="" MAXLENGTH="140" PLACEHOLDER="Ingrese una descripcion"></textarea>	
+						<textarea rows="4" cols="40" name="descripcion" value="" MAXLENGTH="140" PLACEHOLDER="Ingrese una descripcion"></textarea>
 					</div>
 					<div id="boton">
-						<input type="submit" name="buscar" value="Buscar" onclick="buscar"/>
+						<input type="submit" name="buscar" value="Buscar" onclick="return validarFechas()"/>
 					</div>
 				</form>
 			</div>
@@ -91,5 +97,28 @@ include("Conectar.php");
 	<?php
 		include("Pie.php");
 	?>
+	<script type="text/javascript">
+	function validarFechas(){
+		var fechaDesde = document.getElementById('fd').value;//fecha del 1er input
+		var fechaHasta = document.getElementById('fh').value;//fecha del 2do nput
+		if((fechaDesde == "")&&(fechaHasta == "")){//si no ingresó fechas es porqe no quiso buscar por fechas
+			return true;
+		}
+		if((fechaDesde == "")||(fechaHasta == "")){//si alguna o 2 de las fechas no fueron seteadas->alert
+			alert("Se deben ingresar ambas fechas");
+			return false;
+		}
+		else
+		if(fechaDesde>fechaHasta){
+			alert("La fecha 'desde' no puede ser posterior a la fecha 'hasta'");
+			return false;
+		}
+			//paso la validacion entondes retorno true;
+			//alert("Desde: "+fechaDesde+"  "+"Hasta: "+fechaHasta);
+			return true;
+
+
+	}
+	</script>
 </body>
 </html>

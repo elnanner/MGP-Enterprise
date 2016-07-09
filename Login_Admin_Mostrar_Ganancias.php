@@ -12,28 +12,34 @@ include("Conectar.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>CouchInn | Reporte Ganancias</title>
-    <link rel ="stylesheet" type ="text/css" href ="Estilos_Login_Admin_Modificar_Tipo.css"/>
-    <link rel="stylesheet" href="Login_Admin_Mostrar_Ganancias.css" media="screen" title="no title" charset="utf-8">
-
-
+    <link rel="stylesheet" href="Estilos_Login_Admin_Mostrar_Ganancias.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
     <?php
   		include("Login_Admin_Cabeza.php");
   	?>
   	<div id= "cuerpo">
-  		<?php
+  	  <?php
   			include("Login_Admin_Menu.php");
   		?>
-    </div>
-    <div class="contenido-ganancias">
-        <form class="ingreso-fechas"  method="post">
-            Seleccione Fecha Desde: <input type="date" id='fd' name="fechaDesde" value="" min="2016-01-01">
-            Seleccione Fecha Hasta: <input type="date" id='fh' name="fechaHasta" value="" min="2016-01-01">
-            <br>
-            <input type="submit" name="mostrarGanancias" value="Mostrar Resultados" onclick="return validarFechas()">
-
-        </form>
+      <div class="contenido-ganancias">
+        <div id= "titulo">
+          <p> Modificar Tipo </p>
+          <form class="ingreso-fechas"  method="post">
+              <div id="formulario">
+               Seleccione Fecha Desde: <input type="date" id='fd' name="fechaDesde" value="" min="2016-01-01">
+              </div>
+              <div id="formulario"> 
+                Seleccione Fecha Hasta: <input type="date" id='fh' name="fechaHasta" value="" min="2016-01-01">
+              </div>
+              <br>
+              <div id="boton">
+                <input type="submit" name="mostrarGanancias" value="Mostrar Resultados" onclick="return validarFechas()">
+                <input type="button" name="cancelar" value="Cancelar" onClick="location.href='Login_Admin_Index.php'"/>
+              </div>
+          </form>
+        </div>
+        
         <table>
           <thead>
             <tr>
@@ -78,7 +84,7 @@ include("Conectar.php");
 				</table>
 				<table>
 					<thead>
-							<th style="text-align:right;padding-right: 8px"><p><?php echo $gananciaTotal ?></p></th>
+							<th style="text-align:right;padding-right: 8px"><p><?php if (isset($gananciaTotal)) { echo $gananciaTotal; } ?></p></th>
 					</thead>
 				</table>
     </div>
